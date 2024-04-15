@@ -3,10 +3,18 @@ import './ShopCategory.css'
 import { ShopContext } from "../Context/ShopContext";
 import Item from "../Components/Item/Item";
 import drop_down from '../Components/Assets/down-arrow-removebg-preview.png'
+import all_Product from "./../data/all_product";
 
 
 const ShopCategory = (props) => {
-    const {all_Product}= useContext(ShopContext);
+
+    // const {all_Product}= useContext(ShopContext);
+
+    console.log("all_Product", all_Product);
+
+
+    console.log("props", props);
+
     return(
         <div className="shop-category"> 
           <img src={props.banner} alt=""/>
@@ -21,14 +29,14 @@ const ShopCategory = (props) => {
         <div className="shopcategory-products">
           {all_Product.map((item,i)=>{
            if(props.category===item.category){
-           return <Item key={item.i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}/>
+              return <Item key={item.i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}/>
            }
            else{
-            return null;
+              return null;
            }
           })}
         </div>
-        </div>
+      </div>
     )
 }
 export default ShopCategory
